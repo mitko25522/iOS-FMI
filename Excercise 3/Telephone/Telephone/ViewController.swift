@@ -10,6 +10,8 @@ import UIKit
 
 class ViewController: UIViewController {
 
+
+    @IBOutlet weak var parentView: UIView!
     @IBOutlet var numButtons: [UIButton]!
     @IBOutlet weak var callButton: UIButton!
     @IBOutlet weak var eraseButton: UIButton!
@@ -18,6 +20,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.parentView.alpha = 0
         labelView.text = ""
         eraseButton.isHidden = true
         
@@ -30,16 +33,40 @@ class ViewController: UIViewController {
             button.layer.cornerRadius = button.frame.width/2
         }
         
+        UIView.animate(withDuration: 0.5) {
+            self.parentView.alpha = 1
+        }
     }
 
     @IBAction func buttonTap(_ sender: UIButton) {
         if let buttonTitle = sender.currentTitle {
             labelView.text = (labelView.text ?? "") + buttonTitle
         }
+        animateButton(sender)
         updateEraseButton()
     }
     
-   
+    func animateButton(_ button: UIButton){
+        zoomInButton(button)
+        zoomOutButton(button)
+    }
+    
+    func zoomInButton(_ button: UIButton) {
+        UIView.animate(withDuration: 0.1) {
+            button.center.x -= 5
+            button.center.y -= 5
+            button.frame.size.width += 10
+            button.frame.size.height += 10
+        }
+    }
+    func zoomOutButton(_ button: UIButton) {
+        UIView.animate(withDuration: 0.2) {
+            button.center.x += 5
+            button.center.y += 5
+            button.frame.size.width -= 10
+            button.frame.size.height -= 10
+        }
+    }
     
     @IBAction func erase(_ sender: UIButton) {
         if let labelText = labelView.text?.dropLast() {
