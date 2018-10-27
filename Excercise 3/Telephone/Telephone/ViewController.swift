@@ -21,51 +21,35 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.parentView.alpha = 0
-        labelView.text = ""
-        eraseButton.isHidden = true
+        self.parentView.frame.origin.y += 100
+    
+        callButton.backgroundColor = .myGreen
+        callButton.layer.cornerRadius = callButton.frame.width / 2
         
-        let myGreen = UIColor(red: 0.1, green: 1, blue: 0, alpha: 1)
-        callButton.backgroundColor = myGreen
-        
-        callButton.layer.cornerRadius = callButton.frame.width/2
-        eraseButton.backgroundColor = nil
         for button in numButtons {
-            button.layer.cornerRadius = button.frame.width/2
+            button.layer.cornerRadius = button.frame.width / 2
         }
         
+        self.parentView.fadeIn()
+    }
+}
+
+extension UIView {
+    func fadeIn() -> Void {
         UIView.animate(withDuration: 0.5) {
-            self.parentView.alpha = 1
+            self.alpha = 1
+            self.frame.origin.y -= 100
         }
     }
+}
 
+extension ViewController {
     @IBAction func buttonTap(_ sender: UIButton) {
         if let buttonTitle = sender.currentTitle {
-            labelView.text = (labelView.text ?? "") + buttonTitle
+            labelView.text = "\(labelView.text ?? "")\(buttonTitle)"
         }
-        animateButton(sender)
+        sender.animate()
         updateEraseButton()
-    }
-    
-    func animateButton(_ button: UIButton){
-        zoomInButton(button)
-        zoomOutButton(button)
-    }
-    
-    func zoomInButton(_ button: UIButton) {
-        UIView.animate(withDuration: 0.1) {
-            button.center.x -= 5
-            button.center.y -= 5
-            button.frame.size.width += 10
-            button.frame.size.height += 10
-        }
-    }
-    func zoomOutButton(_ button: UIButton) {
-        UIView.animate(withDuration: 0.2) {
-            button.center.x += 5
-            button.center.y += 5
-            button.frame.size.width -= 10
-            button.frame.size.height -= 10
-        }
     }
     
     @IBAction func erase(_ sender: UIButton) {
@@ -87,3 +71,28 @@ class ViewController: UIViewController {
     
 }
 
+extension UIButton {
+    func animate(){
+        self.zoomIn()
+        self.zoomOut()
+    }
+    
+    func zoomIn() {
+        UIView.animate(withDuration: 0.1) {
+            self.center.x -= 5
+            self.center.y -= 5
+            self.frame.size.width += 10
+            self.frame.size.height += 10
+        }
+    }
+    
+    func zoomOut() {
+        UIView.animate(withDuration: 0.2) {
+            self.center.x += 5
+            self.center.y += 5
+            self.frame.size.width -= 10
+            self.frame.size.height -= 10
+        }
+    }
+    
+}
