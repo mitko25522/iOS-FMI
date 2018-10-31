@@ -73,26 +73,12 @@ extension ViewController {
 
 extension UIButton {
     func animate(){
-        self.zoomIn()
-        self.zoomOut()
-    }
-    
-    func zoomIn() {
-        UIView.animate(withDuration: 0.1) {
-            self.center.x -= 5
-            self.center.y -= 5
-            self.frame.size.width += 10
-            self.frame.size.height += 10
+        UIView.animate(withDuration: 0.1, animations: {
+            self.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
+        }) { (finished) in
+            UIView.animate(withDuration: 0.1, animations: {
+                self.transform = .identity
+            })
         }
     }
-    
-    func zoomOut() {
-        UIView.animate(withDuration: 0.2) {
-            self.center.x += 5
-            self.center.y += 5
-            self.frame.size.width -= 10
-            self.frame.size.height -= 10
-        }
-    }
-    
 }
