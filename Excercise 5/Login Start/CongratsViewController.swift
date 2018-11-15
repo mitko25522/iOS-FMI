@@ -16,14 +16,18 @@ final class CongratsViewController: UIViewController {
     var username: String?
     var password: String?
     
-    var locationModel: LocationModel? = LocationModel()
+    var locationModel: LocationModel?
     
     override func viewDidLoad() {
-        navigationController?.setNavigationBarHidden(true, animated: false)
         usernameLabel.text = username ?? ""
         passwordLabel.text = password ?? ""
+        locationModel = LocationModel()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        navigationController?.setNavigationBarHidden(true, animated: false)
+    }
     
     // Задача 6: При всяко отваряне на CongratsViewController трябва да направите нова инстанция на LocationModel.
     

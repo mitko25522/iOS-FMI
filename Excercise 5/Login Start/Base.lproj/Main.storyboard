@@ -123,7 +123,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="nextTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WRH-AO-2rR"/>
+                                    <segue destination="aSW-eR-D8L" kind="presentation" id="GP5-mc-QJR"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -153,7 +153,6 @@
                     <connections>
                         <outlet property="passwordTextField" destination="K06-3V-Ha6" id="xZd-g0-hvr"/>
                         <outlet property="usernameTextField" destination="Uzz-Eq-vQn" id="fsY-oZ-Ck0"/>
-                        <segue destination="aSW-eR-D8L" kind="show" identifier="showCongratsViewController" id="B1r-VM-L2D"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

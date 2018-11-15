@@ -29,16 +29,13 @@ final class LoginViewController: UIViewController {
         passwordTextField.setPlaceholderColor(UIColor.lightGray)
     }
     
-    @IBAction func nextTapped(_ sender: Any) {
-        performSegue(withIdentifier: "showCongratsViewController", sender: nil)
-    }
     
     @IBAction func viewTapped(_ sender: Any) {
         view.endEditing(true)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let destination = segue.destination as? CongratsViewController
+        let destination = (segue.destination as? UINavigationController)?.topViewController as? CongratsViewController
         
         if let usernameText = usernameTextField.text {
             if let passwordText = passwordTextField.text {

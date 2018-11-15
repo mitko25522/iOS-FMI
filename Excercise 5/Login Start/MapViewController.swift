@@ -16,12 +16,13 @@ final class MapViewController: UIViewController {
     @IBOutlet weak var mapView: MKMapView!
     
     override func viewDidAppear(_ animated: Bool) {
+        navigationController?.setNavigationBarHidden(false, animated: true)
         centerMapOnLocation(location: locationModel!)
     }
     
     func centerMapOnLocation(location: LocationModel) {
         let coordinateRegion = MKCoordinateRegion(center: location.initialLocation.coordinate, latitudinalMeters: location.regionRadius, longitudinalMeters: location.regionRadius)
-        mapView.setRegion(coordinateRegion, animated: true)
+        mapView.setRegion(coordinateRegion, animated: false)
     }
     
     // Задача 10: Завържете MKMapView-то от xib файла с mapView outlet-a от този файл.
