@@ -18,25 +18,28 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" fixedFrame="YES" insetsLayoutMarginsFromSafeArea="NO" image="bunny-themplate" translatesAutoresizingMaskIntoConstraints="NO" id="Ilr-nE-R14">
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" insetsLayoutMarginsFromSafeArea="NO" image="bunny-themplate" translatesAutoresizingMaskIntoConstraints="NO" id="Ilr-nE-R14">
                                 <rect key="frame" x="85" y="277" width="205" height="215"/>
-                                <autoresizingMask key="autoresizingMask"/>
                                 <color key="backgroundColor" red="0.75406885150000003" green="0.75408679249999999" blue="0.75407713649999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <gestureRecognizers/>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="DLa-gK-TKq" appends="YES" id="PAf-U7-On5"/>
                                 </connections>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="grass" translatesAutoresizingMaskIntoConstraints="NO" id="med-aX-ePb">
-                                <rect key="frame" x="-20" y="508" width="415" height="169"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="grass" translatesAutoresizingMaskIntoConstraints="NO" id="med-aX-ePb">
+                                <rect key="frame" x="-21" y="522" width="416" height="155"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="169" id="GPg-Rk-iT6"/>
+                                    <constraint firstAttribute="height" constant="155" id="YGO-Af-TLF"/>
                                 </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="med-aX-ePb" firstAttribute="bottom" secondItem="8bC-Xf-vdC" secondAttribute="bottom" constant="10" id="G5K-1I-5AI"/>
+                            <constraint firstItem="Ilr-nE-R14" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="85" id="Gro-oV-YYi"/>
+                            <constraint firstItem="med-aX-ePb" firstAttribute="top" secondItem="Ilr-nE-R14" secondAttribute="bottom" constant="30" id="JsQ-mQ-HVO"/>
+                            <constraint firstItem="Ilr-nE-R14" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="257" id="WEr-4u-afr"/>
+                            <constraint firstItem="Ilr-nE-R14" firstAttribute="centerX" secondItem="med-aX-ePb" secondAttribute="centerX" id="ZK5-pc-OHy"/>
                             <constraint firstItem="med-aX-ePb" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="-20" id="ddk-qz-WWG"/>
                             <constraint firstItem="med-aX-ePb" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" constant="20" id="mQp-Vj-zES"/>
                         </constraints>

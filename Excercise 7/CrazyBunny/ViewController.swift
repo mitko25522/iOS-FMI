@@ -17,6 +17,18 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         super.viewDidLoad()
         
         bunnyImageView.center = view.center
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        let animation = CABasicAnimation(keyPath: #keyPath(CALayer.opacity))
+        animation.duration = 0.3
+        animation.fromValue = 0
+        animation.toValue = 1
+        
+        grassImageView.layer.add(animation, forKey: nil)
     }
 
     override func didReceiveMemoryWarning() {
@@ -35,7 +47,37 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     @IBAction func tapAction(_ sender: Any) {
-
+//        let backgroundColorAnimation = CABasicAnimation(keyPath: "backgroundColor")
+//        backgroundColorAnimation.duration = 0.3
+//        backgroundColorAnimation.fromValue = bunnyImageView.backgroundColor
+//        backgroundColorAnimation.toValue = randomColor()
+//        backgroundColorAnimation.beginTime = CACurrentMediaTime()
+//
+//        let opacityAnimation = CABasicAnimation(keyPath: "opacity")
+//        backgroundColorAnimation.duration = 0.3
+//        backgroundColorAnimation.fromValue = bunnyImageView.layer.opacity
+//        backgroundColorAnimation.toValue = 1
+//        backgroundColorAnimation.beginTime = CACurrentMediaTime() + backgroundColorAnimation.beginTime + backgroundColorAnimation.duration
+//
+//        let animationGroup = CAAnimationGroup()
+//        animationGroup.animations = [backgroundColorAnimation, opacityAnimation]
+//        animationGroup.duration = backgroundColorAnimation.duration + opacityAnimation.duration
+//
+//        bunnyImageView.layer.add(animationGroup, forKey: nil)
+        
+        UIView.animate(withDuration: 0.1, animations: {
+            self.bunnyImageView.backgroundColor = self.randomColor()
+            self.bunnyImageView.layer.opacity = 0
+            self.grassImageView.frame.size.height += 20
+            self.grassImageView.center.y -= 20
+        }, completion: { (_) in
+            UIView.animate(withDuration: 0.1, animations: {
+                self.bunnyImageView.layer.opacity = 1
+                self.grassImageView.frame.size.height -= 20
+                self.grassImageView.center.y += 20
+            })
+        })
     }
+    
 }
 
