@@ -23,12 +23,22 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        let animation = CABasicAnimation(keyPath: #keyPath(CALayer.opacity))
-        animation.duration = 0.3
-        animation.fromValue = 0
-        animation.toValue = 1
+        let animationOut = CABasicAnimation(keyPath: #keyPath(CALayer.opacity))
+        animationOut.duration = 0.7
+        animationOut.fromValue = 1
+        animationOut.toValue = 0
         
-        grassImageView.layer.add(animation, forKey: nil)
+        let animationIn = CABasicAnimation(keyPath: #keyPath(CALayer.opacity))
+        animationIn.duration = 0.5
+        animationIn.fromValue = 0
+        animationIn.toValue = 1
+        animationIn.beginTime = animationOut.beginTime + animationOut.duration
+        
+        let animationGroup = CAAnimationGroup()
+        animationGroup.animations = [animationOut, animationIn]
+        animationGroup.duration = animationOut.duration + animationIn.duration
+        
+        bunnyImageView.layer.add(animationGroup, forKey: nil)
     }
 
     override func didReceiveMemoryWarning() {
